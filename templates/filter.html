@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'favicon.png' %}" rel="icon" type="image/png">
+    <title>ArtBook - Explorar </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+            <header>
+                <div class="header_inner">
+                    <form action="/search" method="POST">
+                    {% csrf_token %}
+                    <div class="left-side">
+                        <!-- LOGO -->
+                        <div class="left-side lg:pr-4" id="logo" class=" uk-hidden@s">
+                            <a href="/">
+                                <b><h1 class="text-red-500" style="font-size: 1.3rem;">ARTBOOK</h1></b>
+                            </a>
+                        </div>
+                            <button type="submit"><i class="fa fa-search fa-1x"></i></button>&nbsp; &nbsp;
+                            <input type="text" name="username" placeholder="Buscar artista...">
+                    </div>
+                    </form>
+                </div>
+            </header>
+
+            <!-- FILTRO DE IMÁGENES POR GÉNERO -->
+            <br>
+            <form method="GET" action="{% url 'filter' %}">
+                {{ form.as_p }}
+                <br>
+                <input type="submit" value="Filtrar imágenes" class="bg-gradient-to-br from-pink-500 to-red-400" />
+            </form>
+            <br>
+
+            <table class="table" style="border-collapse: separate; margin-left: 20px;" >
+                <thead>
+                <tr class="bg-gradient-to-br from-pink-500 to-red-400">
+                    <th style="color:white" > Usuario </th>
+                    <th style="color:white"> Imagen </th>
+                    <th style="color:white"> Género </th>
+                    <th style="color:white"> Descripción </th>
+                    <th style="color:white"> Fecha de creación </th>
+                    <th style="color:white"> Likes </th>
+                </tr>
+                </thead>
+                <tbody>
+					{% for post in posts %}
+                        <tr>
+                            <th style="color:white" > {{ post.user }} </th>
+                            <th>
+                                <a class="strip" href="{{post.image.url}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
+						            <img src={{post.image.url}} style="height: 120px; width: 120px;"></a>
+                            </th>
+                            <th style="color:white"> {{ post.get_genre_display }} </th>
+                            <th style="color:white"> {{ post.caption }} </th>
+                            <th style="color:white"> {{ post.created_at }} </th>
+                            <th style="color:white"> {{ post.num_of_likes }} </th>
+                        </tr>
+					{% endfor %}
+                </tbody>
+            </table>
+
+
+
+ <!-- Scripts
+    ================================================== -->
+    <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/uikit.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+    <script src="{% static '../../unpkg.com/ionicons%405.2.3/dist/ionicons.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="favicon.png" rel="icon" type="image/png">
+    <title>Artbook - Buscar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+            <header>
+                <div class="header_inner">
+                    <form action="/search" method="POST">
+                    {% csrf_token %}
+                    <div class="left-side">
+
+                        <!-- LOGO -->
+                        <div class="left-side lg:pr-4" id="logo" class=" uk-hidden@s">
+                            <a href="/">
+                                <b><h1 class="text-red-500" style="font-size: 1.3rem;">ARTBOOK</h1></b>
+                            </a>
+                        </div>
+
+                        <div class="left-side lg:pr-4" id="" class=" uk-hidden@s">
+                            <a href="/filter">
+                                <b><h1 class="text-red-500" style="font-size: 1.3rem;">EXPLORAR</h1></b>
+                            </a>
+                        </div>
+                            <button type="submit"><i class="fa fa-search fa-1x"></i></button>&nbsp; &nbsp;
+                            <input type="text" name="username" placeholder="Buscar usuario...">
+                    </div>
+                    </form>
+
+                    <div class="right-side lg:pr-4">
+                    </div>
+                </div>
+            </header>
+            
+            <div style="margin-left: 250px; margin-right: 250px;">
+                
+                <style>
+                body{margin-top:20px;
+                background-color: #eee;
+                }
+
+                .search-result-categories>li>a {
+                    color: #b6b6b6;
+                    font-weight: 400
+                }
+
+                .search-result-categories>li>a:hover {
+                    background-color: #ddd;
+                    color: #555
+                }
+
+                .search-result-categories>li>a>.glyphicon {
+                    margin-right: 5px
+                }
+
+                .search-result-categories>li>a>.badge {
+                    float: right
+                }
+
+                .search-results-count {
+                    margin-top: 10px
+                }
+
+                .search-result-item {
+                    padding: 20px;
+                    background-color: #fff;
+                    border-radius: 4px
+                }
+
+                .search-result-item:after,
+                .search-result-item:before {
+                    content: " ";
+                    display: table
+                }
+
+                .search-result-item:after {
+                    clear: both
+                }
+
+                .search-result-item .image-link {
+                    display: block;
+                    overflow: hidden;
+                    border-top-left-radius: 4px;
+                    border-bottom-left-radius: 4px
+                }
+
+                @media (min-width:768px) {
+                    .search-result-item .image-link {
+                        display: inline-block;
+                        margin: -20px 0 -20px -20px;
+                        float: left;
+                        width: 200px
+                    }
+                }
+
+                @media (max-width:767px) {
+                    .search-result-item .image-link {
+                        max-height: 200px
+                    }
+                }
+
+                .search-result-item .image {
+                    max-width: 100%
+                }
+
+                .search-result-item .info {
+                    margin-top: 2px;
+                    font-size: 12px;
+                    color: #999
+                }
+
+                .search-result-item .description {
+                    font-size: 13px
+                }
+
+                .search-result-item+.search-result-item {
+                    margin-top: 20px
+                }
+
+                @media (min-width:768px) {
+                    .search-result-item-body {
+                        margin-left: 200px
+                    }
+                }
+
+                .search-result-item-heading {
+                    font-weight: 400
+                }
+
+                .search-result-item-heading>a {
+                    color: #555
+                }
+
+                @media (min-width:768px) {
+                    .search-result-item-heading {
+                        margin: 0
+                    }
+                }
+                </style>
+
+                <div class="container">
+                <div class="row ng-scope">
+                    <div class="col-md-3 col-md-push-9">
+                        <h4><strong>Usuarios con ese nombre de usuario o similares encontrados:</strong> <span class="fw-semi-bold"><b>{{username}}</b></span></h4>
+                        <br>
+                    </div>
+                    <div class="col-md-9 col-md-pull-3">
+                        {% for users in username_profile_list %}
+                        <section class="search-result-item">
+                            <a class="image-link" href="/profile/{{users.user}}"><img class="image" src="{{users.profile_img.url}}">
+                            </a>
+                            <div class="search-result-item-body">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <h4 class="search-result-item-heading"><a href="/profile/{{users.user}}"><b>@{{users.user}}</b></a></h4>
+                                        <p class="info">{{users.location}}</p>
+                                        <p class="info">{{users.specialization}}</p>
+                                        <p class="description">{{users.bio}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        {% endfor %}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+ <!-- Scripts
+    ================================================== -->
+    <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>  
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/uikit.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+    <script src="{% static '../../unpkg.com/ionicons%405.2.3/dist/ionicons.js' %}"></script>
+</body>
+
+
+</html>

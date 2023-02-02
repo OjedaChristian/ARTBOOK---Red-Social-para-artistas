@@ -1,0 +1,111 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
+    <title>Artbook - Configuración de perfil </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+
+</head>
+
+<body>
+            <div class="container m-auto"> 
+
+                <h1 class="text-2xl leading-none text-white tracking-tight mt-3"><a href="/"> <strong style="color: #ff5271">ARTBOOK</strong> / </a> Configuración de perfil de <b>{{user.username}} - {{user.email}}</b> </h1>
+                <br>
+                <hr>
+                <div class="grid lg:grid-cols-3 mt-12 gap-8">
+                    <div>
+                        <h3 class="text-xl text-white mb-2"><a href="/filter">Explorar <strong style="color: #ff5271">ARTBOOK</strong></a></h3>
+                    </div>
+                    <div>
+                        <h3 class="text-xl text-white mb-2"><a href="/profile/{{user.username}}">Ver mi <strong style="color: #ff5271">PERFIL</strong></a></h3>
+                    </div>
+                    <div class="bg-white rounded-md lg:shadow-lg shadow col-span-2">
+
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                       <div class="grid grid-cols-2 gap-3 lg:p-6 p-4">
+
+                           <div>
+                               <div class="col-span-1">
+                                    <label> <strong>Imagen de perfil</strong></label>
+                                    <img width="200" src= "{{user_profile.profile_img.url}}" >
+                                    <br>
+                                    <input type="file" name="image_prof" value="" class="shadow-none bg-gray-100">
+                                </div>
+                           </div>
+
+                           <div>
+                               <div class="col-span-1">
+                                    <label> <strong>Banner del perfil</strong></label>
+                                    <img width="200" src="{{user_profile.banner_img.url}}">
+                                    <br>
+                                    <input type="file" name="image_bann" value="" class="shadow-none bg-gray-100">
+                                </div>
+                           </div>
+
+                            <div class="col-span-2">
+                                <label><strong>Biografía / Acerca de mí</strong></label>
+                                <textarea id="about" name="bio" rows="3" value='{{user_profile.bio}}' placeholder="Escribe algo sobre ti..." class="shadow-none bg-gray-100">{{user_profile.bio}}</textarea>
+                            </div> 
+                            <div class="col-span-2">
+                                <label><strong>Localización</strong></label>
+                                <input type="text" name="location" placeholder="País de residencia" value="{{user_profile.location}}" class="shadow-none bg-gray-100">
+                            </div>
+                           <div class="col-span-2">
+                                <label><strong>Puesto de trabajo</strong></label>
+                                <input type="text" name="employment" value='{{user_profile.employment}}' placeholder="Empleo actual" class="shadow-none bg-gray-100">
+                            </div>
+                            <div>
+                               <label><strong>Especialización</strong></label>
+                               <input type="text" name="specialization" value='{{user_profile.specialization}}' placeholder="Campo en el que se especializa" class="shadow-none bg-gray-100">
+                            </div>
+                           <div>
+                               <label><strong>Website</strong></label>
+                               <input type="text" name="website" value='{{user_profile.website}}' placeholder="Página web o portfolio" class="shadow-none bg-gray-100">
+                           </div>
+                           <div>
+                               <style>
+                                   h5 {color: #c90828}
+                               </style>
+                               {% for message in messages %}
+                               <h5><strong>{{message}}</strong></h5>
+                               {% endfor %}
+                           </div>
+                       </div> 
+    
+                       <div class="bg-gray-10 p-6 pt-0 flex justify-end space-x-3">
+                           <button class="p-2 px-4 rounded bg-gray-50 text-red-500"> <a href="/"><strong>Cancelar</strong></a> </button>
+                           <button type="submit" class="button bg-blue-700"> Guardar </button>
+                       </div>
+                        </form>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+ <!-- Scripts
+    ================================================== -->
+    <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>  
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/uikit.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+    <script src="{% static '../../unpkg.com/ionicons%405.2.3/dist/ionicons.js' %}"></script>
+</body>
+</html>
