@@ -4,7 +4,8 @@
 # ARTBOOK - Red Social web para artistas - Proyecto BACKEND
 </div>
 
-ARTBOOK es una aplicación web social enfocada a artistas, dónde además de conectar y comunicarse, pueden publicar sus obras, buscar y filtrar contenido dentro de la app.
+ARTBOOK es una aplicación web social enfocada a artistas, dónde además de conectar y comunicarse pueden publicar sus obras, buscar y filtrar contenido dentro de la app.
+
 Ha sido desarrollada con el framework DJANGO como proyecto personal enfocada al desarrollo BACKEND, se ha utilizado SQLite como base de datos y HTML, CSS y JavaScript para modificar ciertos elementos del frontend.
 <br>
 
