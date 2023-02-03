@@ -30,7 +30,7 @@ Ha sido desarrollada con el framework DJANGO como proyecto personal enfocada al 
           * Descarga de imágenes de la app (Puedes descargar cualquier imagen subida mediante un botón)
 
 * Configuración del perfil de usuario
-   El usuario podrá añadir o modificar estas opciones para que aparezcan en su perfil de usuario.
+  * El usuario podrá añadir o modificar estas opciones para que aparezcan en su perfil de usuario.
     * Nombre de usuario
     * Imagen de perfil
     * Banner del perfil
@@ -43,7 +43,7 @@ Ha sido desarrollada con el framework DJANGO como proyecto personal enfocada al 
     
 * Búsqueda de usuarios / barra de búsqueda por nombre de usuario    
 * Perfil de usuario
-   Los usuarios podrán encontrar tú perfil buscando por tú usuario o mediante el sistema de sugerencia de usuarios, en tú perfil aparecerán los siguientes      datos:
+  * Los usuarios podrán encontrar tú perfil buscando por tú usuario o mediante el sistema de sugerencia de usuarios, en tú perfil aparecerán los siguientes      datos:
     * Usuario - Email del usuario
     * Biografía
     * Número de usuarios a los que sigues
@@ -51,13 +51,12 @@ Ha sido desarrollada con el framework DJANGO como proyecto personal enfocada al 
     * Número de imágenes subidas
     * Acceso / visualiación de todas las imágenes subidas por el usuario
 
-* Sistema de seguimiento / dejar de seguir usuarios
-  Podrás seguir / dejar de seguir usuarios, esto afectará a tu inicio/feed y mostrará imagénes subidas por usuarios a los que sigues, además si accedes
-  a tú perfil no podrás seguirte, aparecerá 'configurar mi perfil' y te permitirá cambiar opciones de tu perfil.
+* Sistema de seguimiento de usuarios
+   * Podrás seguir / dejar de seguir usuarios, esto afectará a tu inicio / feed y mostrará imagénes subidas por usuarios a los que sigues, además si accedes a tú perfil no podrás seguirte, aparecerá 'configurar mi perfil' y te permitirá cambiar opciones de tu perfil.
     * Botón dinámico seguir / dejar de seguir / configurar mi perfil
     
 * Explorar /  sistema de filtrado de imágenes mediante combinación de parámetros
-  Al acceder a 'Explorar' podrás buscar y filtrar todas las imágenes subidas a la app, las opciones del sistema de filtro son las siguientes:
+  * Al acceder a 'Explorar' podrás buscar y filtrar todas las imágenes subidas a la app, las opciones del sistema de filtro son las siguientes:
     * Filtro por género de la imagen (Ilustración, fantasía, arte conceptual, paisajes, retratos, diseño)
     * Filtro por usuario / autor de la obra
   
